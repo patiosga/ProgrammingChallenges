@@ -18,6 +18,7 @@ If J < 0 the it represents the contraint xi = - xj, otherwise xi = xj.
 The program stop when a contradicting constraint is given.  
 
 e.g  
+Input:  
 4  
 7  
 1 2  
@@ -36,3 +37,40 @@ E
 E  
 C  
 
+
+2. Find Lakes problem  
+  
+The task is to find the number of the lakes as well as the surface area of each one of them. The encoded image is given as  
+a 2D array of tiles that can be either a ground tile or a water tile. Each tile in the image corresponds to one square meter of area. Given a  
+single water tile, a lake is defined to cover all the water tiles that are reachable from the initial tile by performing an arbitrary sequence  
+of up/down/left or right moves on water tiles (not diagonally). You can assume that the border tiles found at the edge of the image are always  
+ground tiles  
+  
+Input:  
+  
+The first two lines of the input contain two integers N and M. These define an N x M 2D array  
+of tiles. The next N lines of the input are strings of exactly M characters, which are a combination of to mark a ground tile and 1 to mark a water tile.  
+OR  
+You can select a randomly generated matrix.  
+
+Warning!! In order for the user input to work all positions that are at the borders of the matrix must be equal to 0 (ground tiles).  
+  
+Output:  
+  
+The first line of the output should be a single integer K that is the number of distinct lakes found in the data. The second line should have K  
+space separated integers that are the sizes in square meters of each lake. The integers in the second line (lake sizes) must be in sorted order,  
+from the smallest to the largest.  
+
+e.g. (of user input)  
+Input:  
+00000  
+01100  
+01010  
+01010  
+00000  
+
+Output:  
+Number of lakes 2  
+Sorted by size:  2, 4  
+
+  
