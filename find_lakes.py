@@ -4,23 +4,31 @@ from datetime import timedelta
 
 
 def find(A, B):  # A,B tuples
-    if unionfind.get(A) is None or unionfind.get(B) is None:
+    if clusters.get(A) is None or clusters.get(B) is None:  # at least one lake has not been encountered
         return False
-    return unionfind[A] == unionfind[B]
+    return clusters.get(A) == clusters.get(B)
+    # if the two lakes are marked with the same cluster code then they are
+    # already in the same lake
 
 
 def union(A, B):  # A,B tuples
     # All the keys with value unionfind[A] must be updated to value unionfind[B]
-    lakes = unionfind.keys()
-    clusterA = unionfind[A]
-    clusterB = unionfind[B]
-    for key in lakes:
-        if unionfind[key] == clusterA:
-            unionfind[key] = clusterB
+    clusterA = clusters.get(A)
+    clusterB = clusters.get(B)
+    for coordinate in unionfind[clusterB]:  # unionfind[i] is a set of tuples (coordinates)
+        clusters[coordinate] = clusterA
+    unionfind[clusterA] = unionfind[clusterA].union(unionfind[clusterB])
+    unionfind[clusterB] = set()
+    # replace old cluster of B elements with an empty set because it was united with the cluster of A.
+    # It is not deleted because it messes up the cluster alignment
 
 
+print("Map must be at least 3x3")
 height = int(input("Give map height: "))  # x
 length = int(input("Give map length: "))  # y
+
+clusters = dict()  # key: coordinate, value: position of lake set in sets of lakes --> faster union
+unionfind = []  # list of sets
 
 user_input = input("Do you want a randomly generated map? [y/n]: ")
 while user_input != 'y' and user_input != 'n':
@@ -45,34 +53,32 @@ else:
 # Record running time of the algorithm
 start_time = time.monotonic()
 
-unionfind = dict()
+# unionfind = dict()
 
-lake_counter = 0
+lake_counter = -1
 connections = 0  # number of times two lakes get connected
 for i in range(1, height - 1):  # The edges are always zero
     for j in range(1, length - 1):
         if lake_map[i][j] == 1:
             if lake_map[i - 1][j] == 1 and lake_map[i][j - 1] == 1 and not find((i - 1, j), (i, j - 1)):
                 union((i - 1, j), (i, j - 1))  # The lake that includes i-1,j gets the value of i,j-1
-                unionfind[(i, j)] = unionfind.get((i, j - 1))
+                clusters[(i, j)] = clusters.get((i - 1, j))  # (i, j) is marked with the correct set position
+                unionfind[clusters[(i, j)]].add((i, j))  # (i, j) is added to the correct set of water tiles
                 connections += 1
             elif lake_map[i][j - 1] == 1:
-                unionfind[(i, j)] = unionfind.get((i, j - 1))
+                clusters[(i, j)] = clusters.get((i, j - 1))
+                unionfind[clusters[(i, j)]].add((i, j))
             elif lake_map[i - 1][j] == 1:
-                unionfind[(i, j)] = unionfind.get((i - 1, j))
+                clusters[(i, j)] = clusters.get((i - 1, j))
+                unionfind[clusters[(i, j)]].add((i, j))
             else:
                 lake_counter += 1
-                unionfind[(i, j)] = lake_counter
+                clusters[(i, j)] = lake_counter  # new cluster
+                unionfind.append({(i, j)})  # append new set of water tiles
 
 
-dic = dict()  # keys --> cluster, values --> size of cluster
-for cluster in unionfind.values():
-    if dic.get(cluster) is None:
-        dic[cluster] = 1
-    else:
-        dic[cluster] = dic.get(cluster) + 1
-
-sizes = list(dic.values())
+sizes = [len(lake_set) for lake_set in unionfind]
+sizes = [lake for lake in sizes if lake != 0]  # clean out all empty sets created in unions
 sizes.sort()
 
 # End of algorithmic steps
@@ -80,7 +86,8 @@ end_time = time.monotonic()
 print("Time: ", timedelta(seconds=end_time - start_time))
 
 
-print("Number of lakes", lake_counter - connections)
+print("Number of lakes", lake_counter + 1 - connections)
 # If two lakes get connected then the total number of lakes
 # decreases by 1
+# Also add 1 because the lake counter begins form -1 for implementation purposes
 print("Sorted by size: ", sizes)
