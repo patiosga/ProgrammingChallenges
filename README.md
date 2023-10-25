@@ -68,9 +68,43 @@ Input:
 01010  
 01010  
 00000  
-
+  
 Output:  
 Number of lakes 2  
 Sorted by size:  2, 4  
+  
+  
+3. Spies Phone Number problem  
+  
+  
+The NIS spy network has decided to change the phone number from its headquarters every day as an extra security measure. To inform the  
+spies about the new number, a sequence of words is given only to the spies (a total of 10 words), which they must then compare to a sequence  
+of words from a newspaper, word by word. The comparison of words is done by finding the minimum number of operations required to make the  
+first word identical to the second word. The possible operations that can be performed on the first word are the following 
+    
+Operation 1 (INSERT) Insert any character before or after any index of str1  
+Operation 2 (REMOVE): Remove a character from str1  
+Operation 3 (REPLACE): Replace a character at any index of str1 with some other character.  
+  
+Input:  
+The first line contains the number (N) of words in the newspaper paragraph that will be used The second line contains the 10 positions  
+from the words that must be used from the given paragraph. The third line contains the 10 initial wards of the secret phrase. The   
+fourth line provides the N words of the paragraph.  
+  
+Output:  
+The phone numbers.
+
+Example:
+
+Sample Input  
+1 3 2 5 6 8 15 10 11 12  
+hello i cannot wait to start coding for this problem  
+amidst the tranquil forest a cascade of colors painted the trees in a mesmerizing dance
+  
+Sample Output 1  
+6 8 6 3 7 5 5 3 3 7  
+
+
+
 
   
