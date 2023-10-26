@@ -137,3 +137,22 @@ and a span of 3 days
   
 Output:  
 5.090 is the maximum positive difference
+  
+  
+6. Alloys  
+  
+Certain metal alloys exhibit high flexibility but low conductivity, while others show the opposite, and finally, a few have both  
+attributes in a diminished capacity. We are solely focused on alloys that are not dominated by others, allowing for more in-depth investigations.  
+  
+Here "dominating" refers to an alloy with flexibility x and conductivity y, where no other alloy exhibits both greater flexibility and conductivity.  
+  
+For instance, consider the testing of five different alloys A, B, C, D, E resulting in the following flexibility and conductivity values  
+A=(1,5), B=(2,2), C=(3, 4), D=(5, 2), and E=(4, 1). In this scenario, the scientist is particularly interested in alloys A, C, and D.  
+  
+Input:  
+The first line of the input contains a single integer n. The remaining n lines of the input contain points in the form of  
+(id flexibility conductivity) separated with space. Both flexibility and conductivity must be considered to be floating point values.  
+  
+Output:  
+The IDs of dominant points separated with space in alphanumeric order.  
+
