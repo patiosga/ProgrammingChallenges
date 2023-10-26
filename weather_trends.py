@@ -2,8 +2,8 @@ temperatures = input("Give temperatures (e.g. 2 4 5 6 0 4) : ")
 span = int(input("Give maximum span of days: "))
 temperatures = [float(num) for num in temperatures.split()]
 
-left=0
-right=1
+left = 0
+right = 1
 max_pos_diff = -1  # if this number never exceeds 0 this means there was no temperature increase
 temp_len = len(temperatures)
 
@@ -11,7 +11,7 @@ if span <= 1:
     print("Span must be at least 2")
 elif span == 2:  # if span is 2 then the days are always one after the other, so it is implemented differently
     for i in range(1, temp_len):
-        diff = temperatures[i] - temperatures[i-1]
+        diff = temperatures[i] - temperatures[i - 1]
         if diff > max_pos_diff:
             max_pos_diff = diff
 else:
@@ -38,3 +38,9 @@ if max_pos_diff <= 0:
     print("There was no increase in temperature")
 else:
     print("Max temperature increase :", max_pos_diff, "degrees")
+
+nums = [48, 6, 9, 21, 1]
+
+square_all = map(lambda num: num ** 2, nums)
+
+print(square_all)
