@@ -38,9 +38,3 @@ if max_pos_diff <= 0:
     print("There was no increase in temperature")
 else:
     print("Max temperature increase :", max_pos_diff, "degrees")
-
-nums = [48, 6, 9, 21, 1]
-
-square_all = map(lambda num: num ** 2, nums)
-
-print(square_all)
