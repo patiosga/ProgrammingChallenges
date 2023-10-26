@@ -76,7 +76,6 @@ Sorted by size:  2, 4
   
 3. Spies Phone Number problem  
   
-  
 The NIS spy network has decided to change the phone number from its headquarters every day as an extra security measure. To inform the  
 spies about the new number, a sequence of words is given only to the spies (a total of 10 words), which they must then compare to a sequence  
 of words from a newspaper, word by word. The comparison of words is done by finding the minimum number of operations required to make the  
@@ -102,9 +101,39 @@ hello i cannot wait to start coding for this problem
 amidst the tranquil forest a cascade of colors painted the trees in a mesmerizing dance
   
 Sample Output 1  
+  
 6 8 6 3 7 5 5 3 3 7  
 
 
-
-
+4. Heavy Rainfall
+   
+In the development of simulation systems that are developed to help with extreme rain in mountainous areas there is a need  
+to calculate the amount of water that will form between mountaintops in the worst-case scenario. This program will be used   
+to prdict the outcome of future extreme weather events.    
   
+The program will accept a list of heights that result from discrete measurements from the corresponding mountain ranges. A lake  
+can only form it it's surrounded by higher mountains, and its maximum height will be the minimum of the two surrounding mountains.  
+If a height of 0 is given, it represents the ground. A lake cannot form if any of its parts would be connected to the ground; it  
+would quickly drain otherwise. For each lake formed, its size is the number of discrete blocks that it occupies between the mountaintops.  
+   
+Input:   
+Consider we're given as input the height values 3 0 6 1 2 8 6 7 3 1 2.  
+  
+Output:  
+11  
+
+
+5. Weather trends
+
+We are usked with finding the largest temperature increase that occurs within specific time frames. Our task is to help develop  
+an efficient algorithm to calculate such temperature increases for any time interval.  
+    
+Given a sequence of daily temperature measurements over a period of n days, we are interested in finding the greatest temperature  
+increase that occurs within a window of m days.
+  
+Input:  
+For the temperatures 31 32 33 25.91 31 30 35
+and a span of 3 days
+  
+Output:  
+5.090 is the maximum positive difference
